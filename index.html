@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chop10 Cakes & More | Taste the Luxury</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <div class="logo">CHOP10<span>CAKES</span></div>
+        
+        <nav>
+            <ul class="nav-links">
+                <li><a href="#home" class="active">Home</a></li>
+                <li><a href="#menu">Our Menu</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+        <div class="cart-icon" onclick="toggleCart()">
+            <i class="fas fa-shopping-basket"></i>
+            <span id="cart-count">0</span>
+        </div>
+        <div class="menu-toggle" onclick="toggleMobileMenu()">
+            <i class="fas fa-bars"></i>
+        </div>
+    </header>
+
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Savor the Ultimate <br><span class="highlight">Chops Experience</span></h1>
+            <p>Handcrafted small chops, fiery grills, and premium finger foods made fresh for your elite events and daily cravings.</p>
+            <div class="hero-btns">
+                <a href="#menu" class="btn primary-btn">Explore Menu</a>
+                <a href="#contact" class="btn secondary-btn">Book Catering</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="menu" class="menu-section">
+        <div class="section-title">
+            <h2>Our Premium Menu</h2>
+            <p>Freshly prepared with bold flavors and premium ingredients</p>
+        </div>
+        
+        <div class="categories">
+    <button onclick="filterMenu('all')">All</button>
+    <button onclick="filterMenu('chops')">Chops</button>
+    <button onclick="filterMenu('grills')">Grills</button>
+</div>
+        <div class="menu-container">
+            <div class="menu-card" data-category="chops">
+                <div class="menu-img">
+                    <img src="https://images.unsplash.com/photo-1608039829572-78524f79c4c7?auto=format&fit=crop&w=500&q=80" alt="Samosa and Springrolls">
+                </div>
+                <div class="menu-info">
+                    <h3>The Classic Box</h3>
+                    <p>4 Samosas, 4 Spring rolls, 5 Puff-Puff, and 2 Peppered Gizzards.</p>
+                    <div class="menu-footer">
+                        <span class="price">₦4,500</span>
+                        <button class="add-to-cart-btn" onclick="addToCart('Classic Box', 4500)">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="menu-card" data-category="grills">
+                <div class="menu-img">
+                    <img src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=500&q=80" alt="BBQ Grills">
+                </div>
+                <div class="menu-info">
+                    <h3>Fiery BBQ Chicken Trio</h3>
+                    <p>3 Glazed BBQ Chicken wings served with special spicy dipping sauce.</p>
+                    <div class="menu-footer">
+                        <span class="price">₦6,000</span>
+                        <button class="add-to-cart-btn" onclick="addToCart('BBQ Chicken Trio', 6000)">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="menu-card" data-category="grills">
+                <div class="menu-img">
+                    <img src="https://images.unsplash.com/photo-1599487488170-d11ec9c172f0?auto=format&fit=crop&w=500&q=80" alt="Gizzard Kebab">
+                </div>
+                <div class="menu-info">
+                    <h3>Mega Grills & Chops Platter</h3>
+                    <p>Perfect for groups. Spring rolls, samosas, gizzard kebabs, and prawn skewers.</p>
+                    <div class="menu-footer">
+                        <span class="price">₦15,000</span>
+                        <button class="add-to-cart-btn" onclick="addToCart('Mega Platter', 15000)">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div id="cart-sidebar" class="cart-sidebar">
+        <div class="cart-header">
+            <h3>Your Order</h3>
+            <i class="fas fa-times close-cart" onclick="toggleCart()"></i>
+        </div>
+        <div id="cart-items" class="cart-items-container">
+            <p class="empty-msg">Your basket is empty.</p>
+        </div>
+        <div class="cart-footer">
+            <div class="total-row">
+                <span>Total:</span>
+                <span id="cart-total">₦0</span>
+            </div>
+            
+            <button class="checkout-btn" onclick="checkoutWhatsApp()">Order via WhatsApp <i class="fab fa-whatsapp"></i></button>
+        </div>
+    </div>
+    
+    <section id="about" class="about-section">
+    <div class="about-container">
+        <h2>About Chop10 Cakes</h2>
+
+        <p>
+            Chop10 Cakes is a premium finger food and grill brand dedicated to delivering fresh, tasty, and high-quality small chops for events, parties, and everyday enjoyment.
+        </p>
+
+        <p>
+            We specialize in handcrafted snacks including samosas, spring rolls, gizzards, and BBQ grills made with passion and consistency.
+        </p>
+
+        <p>
+            Our mission is simple: To make every event memorable through great food and reliable service.
+        </p>
+    </div>
+</section>
+
+    <section id="contact" class="contact-section">
+        <div class="contact-container">
+            <div class="contact-info">
+                <h2>Elevate Your Events</h2>
+                <p>Planning a wedding, birthday, corporate event, or private hangout? Let us handle the finger foods while you make memories.</p>
+                <ul>
+                    <li><i class="fas fa-phone"></i> +234 815 627 4861</li>
+                    <li><i class="fas fa-envelope"></i> orders@chop10cakes.com</li>
+                    <li><i class="fas fa-map-marker-alt"></i> Lagos, Nigeria</li>
+                </ul>
+            </div>
+            <div class="contact-form-container">
+                <form id="catering-form" onsubmit="sendInquiry(event)">
+                    <h3>Event Catering Inquiry</h3>
+                    <input type="text" id="name" placeholder="Your Name" required>
+                    <input type="email" id="email" placeholder="Your Email" required>
+                    <input type="text" id="event" placeholder="Event Type (e.g., Birthday, Wedding)" required>
+                    <textarea id="message" rows="4" placeholder="Tell us about your event (Guest count, date, packages needed)" required></textarea>
+                    <button type="submit" class="btn primary-btn btn-block">Send Request</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Chop10 cakes. All rights reserved.</p>
+        <div class="socials">
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
