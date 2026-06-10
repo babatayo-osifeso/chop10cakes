@@ -3,7 +3,7 @@
 // ===============================
 
 // Load cart from localStorage
-let cart = JSON.parse(localStorage.getItem("primechops_cart")) || [];
+let cart = JSON.parse(localStorage.getItem("chop10_cart")) || [];
 
 // ===============================
 // INIT
@@ -52,13 +52,13 @@ function updateCartUI() {
     const cartTotalElement = document.getElementById("cart-total");
 
     // Save cart to localStorage
-    localStorage.setItem("primechops_cart", JSON.stringify(cart));
+    localStorage.setItem("chop10_cart", JSON.stringify(cart));
 
     const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
     cartCountElement.innerText = totalItems;
 
     if (cart.length === 0) {
-        cartItemsContainer.innerHTML = '<p class="empty-msg">Your basket is empty.</p>';
+        cartItemsContainer.innerHTML = '<p class="empty-msg">Your cart is empty.</p>';
         cartTotalElement.innerText = "₦0";
         return;
     }
@@ -108,9 +108,9 @@ function getDeliveryFee() {
 // ===============================
 
 function saveOrder(order) {
-    let orders = JSON.parse(localStorage.getItem("primechops_orders")) || [];
+    let orders = JSON.parse(localStorage.getItem("chop10_orders")) || [];
     orders.push(order);
-    localStorage.setItem("primechops_orders", JSON.stringify(orders));
+    localStorage.setItem("chop10_orders", JSON.stringify(orders));
 }
 
 // ===============================
@@ -125,7 +125,7 @@ function checkoutWhatsApp() {
 
     const phoneNumber = "2348156274861";
 
-    let message = "Hello PrimeChops! I would like to place an order:\n\n";
+    let message = "Hello Chop10 Cakes! I would like to place an order:\n\n";
     let grandTotal = 0;
 
     cart.forEach(item => {
@@ -189,4 +189,32 @@ function filterMenu(category) {
         card.style.display =
             category === "all" || cardCategory === category ? "" : "none";
     });
+}
+
+function sendInquiry(event) {
+    event.preventDefault();
+
+    const phoneNumber = "2348156274861";
+
+    const name = document.getElementById("name").value;
+    const email = document.getElementById("email").value;
+    const eventType = document.getElementById("event").value;
+    const message = document.getElementById("message").value;
+
+    const whatsappMessage =
+`Hello Chop10 Cakes,
+
+I would like to make a catering inquiry.
+
+Name: ${name}
+Email: ${email}
+Event Type: ${eventType}
+
+Details:
+${message}`;
+
+    const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(whatsappMessage)}`;
+
+    window.open(url, "_blank");
+    document.getElementById("catering-form").reset();
 }
